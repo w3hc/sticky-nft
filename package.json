@@ -1,5 +1,5 @@
 {
-    "name": "w3hc-hardhat-template",
+    "name": "sticky-nft",
     "version": "0.1.0",
     "description": "",
     "main": "index.js",
@@ -12,20 +12,17 @@
         "deploy:op-sepolia": "hardhat deploy --network op-sepolia --reset",
         "sourcify:arthera": "hardhat sourcify --network arthera",
         "sourcify:arthera-testnet": "hardhat sourcify --network arthera-testnet",
-        "mint:arthera": "hardhat mint --network arthera --amount",
-        "mint:sepolia": "hardhat mint --network sepolia --amount",
-        "mint:arthera-testnet": "hardhat mint --network arthera-testnet --amount",
-        "mint:op-sepolia": "hardhat mint --network op-sepolia --amount",
-        "send:arthera": "hardhat send --wallet 0xD8a394e7d7894bDF2C57139fF17e5CBAa29Dd977 --network arthera --amount",
-        "send:sepolia": "hardhat send --wallet 0xD8a394e7d7894bDF2C57139fF17e5CBAa29Dd977 --network sepolia --amount",
-        "send:arthera-testnet": "hardhat send --wallet 0xD8a394e7d7894bDF2C57139fF17e5CBAa29Dd977 --network arthera-testnet --amount",
-        "send:op-sepolia": "hardhat send --wallet 0xD8a394e7d7894bDF2C57139fF17e5CBAa29Dd977 --network op-sepolia --amount",
         "bal": "npx hardhat run scripts/check-my-balance.ts --network",
         "prettier": "prettier --write \"**/*.ts\"",
         "prettier-check": "prettier --check \"**/*.ts\""
     },
-    "keywords": [],
-    "author": "",
+    "keywords": [
+        "web3",
+        "nft",
+        "sbt",
+        "legal"
+    ],
+    "author": "Julien Béranger",
     "license": "ISC",
     "devDependencies": {
         "@nomicfoundation/hardhat-chai-matchers": "^2.0.3",

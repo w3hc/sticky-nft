@@ -3,8 +3,6 @@ import color from "cli-color"
 var msg = color.xterm(39).bgXterm(128)
 import hre, { ethers, network } from "hardhat"
 
-const initialMint = ethers.parseEther("10000")
-
 export default async ({ getNamedAccounts, deployments }: any) => {
     const { deploy } = deployments
 
@@ -14,10 +12,11 @@ export default async ({ getNamedAccounts, deployments }: any) => {
 
     const { deployer } = await getNamedAccounts()
     console.log("deployer:", deployer)
+    const targetAddress = "0x8CCbFaAe6BC02a73BBe8d6d8017cC8313E4C90A7"
 
-    const basic = await deploy("Basic", {
+    const miseEnDemeure = await deploy("MiseEnDemeure", {
         from: deployer,
-        args: [initialMint],
+        args: [targetAddress],
         log: true
     })
 
@@ -25,15 +24,15 @@ export default async ({ getNamedAccounts, deployments }: any) => {
         case "sepolia":
             try {
                 console.log(
-                    "Basic ERC-20 token contract deployed:",
-                    msg(basic.receipt.contractAddress)
+                    "MiseEnDemeure contract deployed:",
+                    msg(miseEnDemeure.receipt.contractAddress)
                 )
                 console.log("\nEtherscan verification in progress...")
                 await wait(90 * 1000)
                 await hre.run("verify:verify", {
                     network: network.name,
-                    address: basic.receipt.contractAddress,
-                    constructorArguments: [initialMint]
+                    address: miseEnDemeure.receipt.contractAddress,
+                    constructorArguments: [targetAddress]
                 })
                 console.log("Etherscan verification done. ✅")
             } catch (error) {
@@ -44,15 +43,15 @@ export default async ({ getNamedAccounts, deployments }: any) => {
         case "op-sepolia":
             try {
                 console.log(
-                    "Basic ERC-20 token contract deployed:",
-                    msg(basic.receipt.contractAddress)
+                    "MiseEnDemeure contract deployed:",
+                    msg(miseEnDemeure.receipt.contractAddress)
                 )
                 console.log("\nEtherscan verification in progress...")
                 await wait(90 * 1000)
                 await hre.run("verify:verify", {
                     network: network.name,
-                    address: basic.receipt.contractAddress,
-                    constructorArguments: [initialMint]
+                    address: miseEnDemeure.receipt.contractAddress,
+                    constructorArguments: [targetAddress]
                 })
                 console.log("Etherscan verification done. ✅")
             } catch (error) {
@@ -61,20 +60,18 @@ export default async ({ getNamedAccounts, deployments }: any) => {
             break
 
         case "arthera":
-            // the contract will be verified automatically
             console.log(
-                "Basic ERC-20 token contract deployed:",
-                msg(basic.receipt.contractAddress)
+                "MiseEnDemeure contract deployed:",
+                msg(miseEnDemeure.receipt.contractAddress)
             )
             break
 
         case "arthera-testnet":
-            // the contract will be verified automatically
             console.log(
-                "Basic ERC-20 token contract deployed:",
-                msg(basic.receipt.contractAddress)
+                "MiseEnDemeure contract deployed:",
+                msg(miseEnDemeure.receipt.contractAddress)
             )
             break
     }
 }
-export const tags = ["Basic"]
+export const tags = ["MiseEnDemeure"]
