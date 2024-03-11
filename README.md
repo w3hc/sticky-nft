@@ -22,6 +22,11 @@ pnpm test
 
 ## Deploy
 
+- Edit the metadata json file
+- Upload it to IPFS
+- Replace with the document URL (line 12 in the contract)
+
+Then: 
 ```
 pnpm deploy:<NETWORK_NAME>
 ```
@@ -32,12 +37,6 @@ You can check the current signer wallet balance:
 
 ```
 pnpm bal <NETWORK_NAME>
-```
-
-## Verify using Sourcify
-
-```
-pnpm sourcify:<NETWORK_NAME>
 ```
 
 ## Versions
