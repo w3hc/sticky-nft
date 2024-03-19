@@ -40,6 +40,25 @@ export default async ({ getNamedAccounts, deployments }: any) => {
             }
             break
 
+        case "optimism":
+            try {
+                console.log(
+                    "MiseEnDemeure contract deployed:",
+                    msg(miseEnDemeure.receipt.contractAddress)
+                )
+                console.log("\nEtherscan verification in progress...")
+                await wait(30 * 1000)
+                await hre.run("verify:verify", {
+                    network: network.name,
+                    address: miseEnDemeure.receipt.contractAddress,
+                    constructorArguments: [targetAddress]
+                })
+                console.log("Etherscan verification done. ✅")
+            } catch (error) {
+                console.error(error)
+            }
+            break
+
         case "op-sepolia":
             try {
                 console.log(
