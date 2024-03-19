@@ -20,5 +20,12 @@ describe("Basic ERC-20", function () {
                 miseEnDemeure.transferFrom(bob.address, alice.address, 1)
             ).to.be.revertedWith("This NFT cannot be transferred")
         })
+        it("Should return the right tokenUri", async function () {
+            const { miseEnDemeure, alice, bob } = await loadFixture(
+                deployContracts
+            )
+            expect(await miseEnDemeure.ownerOf(1)).to.be.equal(bob.address)
+            expect(await miseEnDemeure.tokenURI(1)).to.be.equal("https://...")
+        })
     })
 })
